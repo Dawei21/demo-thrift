@@ -1,6 +1,8 @@
-namespace java com.sinbad.thrift.demo
+namespace go com.sinbad.thrift.demo
 
 
+//服务端口号
+const i32 SERVICE_PORT = 8089;
 
 
 
