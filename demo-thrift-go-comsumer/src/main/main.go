@@ -32,10 +32,9 @@ func main() {
 	serviceClientFactory := demo.NewHelloWorldServiceClientFactory(tTransport, protocolTransport)
 	defer newTSocket.Close()
 
-	nowTime := time.Time{}
-	println(time.Now().Format("2006-01-02 15:04"))
-	fmt.Print(nowTime)
-
+	nowTime := time.Now()
+	format := nowTime.Format("2006-01-02 15:04:05")
+	fmt.Println("format : " , format)
 	cancelContext, cancelFunc := context.WithDeadline(context.Background(), nowTime)
 
 	sayHello, err := serviceClientFactory.SayHello(cancelContext ,"Sinbad")
@@ -51,7 +50,7 @@ func main() {
 		cancelFunc()
 		fmt.Println("autoCancel ")
 	} else {
-		fmt.Println(deadline)
+		fmt.Println(deadline.Format("2006-01-02 15:04:05"))
 	}
 
 
